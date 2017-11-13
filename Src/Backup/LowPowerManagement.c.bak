@@ -1,0 +1,102 @@
+/*
+  ******************************************************************************
+  * File Name          : LowPowerManagement.c
+  * Date               : 28/12/2014 12:41:29
+  * Description        : 
+  *                      
+  ******************************************************************************
+*/
+
+#include "user.h"
+#include "gpio.h"
+#include "adc.h"
+#include "dma.h"
+#include "LowPowerManagement.h"
+
+extern ADC_HandleTypeDef hadc;
+extern DMA_HandleTypeDef hdma_adc;
+extern UART_HandleTypeDef huart1;
+extern RTC_HandleTypeDef hrtc;
+extern LCD_HandleTypeDef hlcd;
+
+uint16_t vRef;
+
+uint16_t voltage, battery, VrefLCD;
+void Stop_Mode(void)
+{
+//	ADC_Disable(&hadc);
+//	__HAL_UART_CLEAR_IT(&huart1, UART_CLEAR_WUF);
+//	__HAL_UART_ENABLE_IT(&huart1, UART_IT_WUF);
+	__HAL_ADC_DISABLE(&hadc);
+//	__ADC1_CLK_DISABLE();
+	GPIO_User_Init();
+	HAL_SuspendTick();
+	__HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(&hrtc, RTC_FLAG_WUTF);
+  __HAL_RTC_EXTI_CLEAR_FLAG(RTC_EXTI_LINE_WAKEUPTIMER_EVENT);
+	HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
+	HAL_ResumeTick();
+	SystemClock_User_Config();
+	MX_GPIO_Init();
+//	__ADC1_CLK_ENABLE();
+	__HAL_ADC_ENABLE(&hadc);
+}
+
+uint16_t ReadVoltage(uint16_t Vbatt)
+{
+	return (uint16_t)(((float)(Vbatt * vRef)/4096)/**2*/);
+}
+
+uint16_t ReadVref(uint16_t Vreference)
+{
+	vRefInt_cal = *((uint16_t*)0x1FF80078);
+	return (uint16_t)(float)(((3.F*vRefInt_cal)/(Vreference))*1000);
+}
+
+void LowBattery(void)
+{
+	__HAL_LCD_BLINK_CONFIG(&hlcd, LCD_BLINKMODE_ALLSEG_ALLCOM, LCD_BLINKFREQUENCY_DIV1024);
+	HAL_RTCEx_SetWakeUpTimer_IT(&hrtc, LOW_BATTERY_STOP_TIME, RTC_WAKEUPCLOCK_CK_SPRE_16BITS);
+}
+
+void SystemClock_User_Config(void)
+{
+
+  RCC_OscInitTypeDef RCC_OscInitStruct;
+  RCC_ClkInitTypeDef RCC_ClkInitStruct;
+  RCC_PeriphCLKInitTypeDef PeriphClkInit;
+
+  __PWR_CLK_ENABLE();
+
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_LSI;
+  RCC_OscInitStruct.HSIState = RCC_HSI_ON;
+  RCC_OscInitStruct.HSICalibrationValue = 16;
+  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_NONE;
+  HAL_RCC_OscConfig(&RCC_OscInitStruct);
+
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_HSI;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV8;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV1;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+  HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_0);
+
+  PeriphClkInit.PeriphClockSelection = RCC_PERIPHCLK_USART1|RCC_PERIPHCLK_RTC;
+  PeriphClkInit.Usart1ClockSelection = RCC_USART1CLKSOURCE_PCLK2;
+  PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
+  HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit);
+
+  __SYSCFG_CLK_ENABLE();
+
+}
+/**
+  * @}
+  */
+
+/**
+  * @}
+  */
+
+/****END OF FILE****/
