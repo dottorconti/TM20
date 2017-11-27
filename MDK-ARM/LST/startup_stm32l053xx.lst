@@ -399,11 +399,11 @@ ARM Macro Assembler    Page 7
               00000000 
               00000000 
 Command Line: --debug --xref --cpu=Cortex-M0+ --apcs=interwork --depend=.\out\s
-tartup_stm32l053xx.d -o.\out\startup_stm32l053xx.o -IE:\PRJ_STmicro\TM20\MDK-AR
-M\RTE -IC:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK
-\Keil\STM32L0xx_DFP\1.4.0 --predefine="__MICROLIB SETA 1" --predefine="_RTE_ SE
-TA 1" --predefine="STM32L053xx SETA 1" --list=.\lst\startup_stm32l053xx.lst ../
-Drivers/CMSIS/Device/ST/STM32L0xx/Source/Templates/arm/startup_stm32l053xx.s
+tartup_stm32l053xx.d -o.\out\startup_stm32l053xx.o -IE:\TM20_SW\MDK-ARM\RTE -IC
+:\Keil_v5\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include -IC:\Keil_v5\ARM\PACK\Keil\STM
+32L0xx_DFP\1.6.0 --predefine="__MICROLIB SETA 1" --predefine="_RTE_ SETA 1" --p
+redefine="STM32L053xx SETA 1" --list=.\lst\startup_stm32l053xx.lst ../Drivers/C
+MSIS/Device/ST/STM32L0xx/Source/Templates/arm/startup_stm32l053xx.s
 
 
 

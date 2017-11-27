@@ -20,14 +20,9 @@
 *	VISHAY 	NTCLE100E100E3473JB0 	B25/100  4113
 *	EPCOS 	B57471V2103J62 				B25/100  3730
 */
-	 
-//#define EPCOS
-//#define VISHAY
-//#define NewVISHAY
-//#define NewEPCOS
-	 
-#define VISHAY_mC
-//#define EPCOS_mC
+ 
+//#define VISHAY_mC
+#define EPCOS_mC
 	 
 int16_t ReadTemperature(uint16_t read_temperature);
 uint16_t intTemperature(void);
