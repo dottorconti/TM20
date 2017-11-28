@@ -22,9 +22,10 @@
 */
  
 //#define VISHAY_mC
-#define EPCOS_mC
+//#define EPCOS_mC
+	#define EPCOS_RES1C
 	 
-int16_t ReadTemperature(uint16_t read_temperature);
+int16_t ReadTemperature(uint16_t adc_value);
 uint16_t intTemperature(void);
 	 
 #ifdef __cplusplus
