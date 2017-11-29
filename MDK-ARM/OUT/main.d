@@ -1,7 +1,8 @@
 .\out\main.o: ../Src/main.c
+.\out\main.o: ../Inc/main.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\main.o: ../Inc/stm32l0xx_hal_conf.h
-.\out\main.o: ../Inc/mxconstants.h
+.\out\main.o: ../Inc/main.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h
 .\out\main.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h
@@ -9,6 +10,7 @@
 .\out\main.o: ../Drivers/CMSIS/Include/core_cm0plus.h
 .\out\main.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\out\main.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+.\out\main.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 .\out\main.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 .\out\main.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h

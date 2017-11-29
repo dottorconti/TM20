@@ -2,7 +2,8 @@
 .\out\adcmanagement.o: ../Inc/adcManagement.h
 .\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\adcmanagement.o: ../Inc/stm32l0xx_hal_conf.h
-.\out\adcmanagement.o: ../Inc/mxconstants.h
+.\out\adcmanagement.o: ../Inc/main.h
+.\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h
 .\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h
 .\out\adcmanagement.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h
@@ -10,9 +11,9 @@
 .\out\adcmanagement.o: ../Drivers/CMSIS/Include/core_cm0plus.h
 .\out\adcmanagement.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\out\adcmanagement.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+.\out\adcmanagement.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 .\out\adcmanagement.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 .\out\adcmanagement.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h
-.\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
 .\out\adcmanagement.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\out\adcmanagement.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h

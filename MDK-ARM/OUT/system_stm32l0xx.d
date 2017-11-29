@@ -4,11 +4,13 @@
 .\out\system_stm32l0xx.o: ../Drivers/CMSIS/Include/core_cm0plus.h
 .\out\system_stm32l0xx.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\out\system_stm32l0xx.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+.\out\system_stm32l0xx.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 .\out\system_stm32l0xx.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 .\out\system_stm32l0xx.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h
 .\out\system_stm32l0xx.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\system_stm32l0xx.o: ../Inc/stm32l0xx_hal_conf.h
-.\out\system_stm32l0xx.o: ../Inc/mxconstants.h
+.\out\system_stm32l0xx.o: ../Inc/main.h
+.\out\system_stm32l0xx.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\system_stm32l0xx.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h
 .\out\system_stm32l0xx.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h
 .\out\system_stm32l0xx.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h

@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32l0xx_hal_tim_ex.c
   * @author  MCD Application Team
-  * @version V1.3.0
-  * @date    09-September-2015
   * @brief   TIM HAL module driver.
   * @brief   This file provides firmware functions to manage the following 
   *          functionalities of the Timer (TIM) peripheral:
@@ -55,7 +53,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:

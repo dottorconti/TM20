@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file    stm32l0xx_hal_lcd.c
   * @author  MCD Application Team
-  * @version V1.3.0
-  * @date    09-September-2015
   * @brief   LCD Controller HAL module driver.
   *          This file provides firmware functions to manage the following 
   *          functionalities of the LCD Controller (LCD) peripheral:
@@ -60,7 +58,7 @@
   ******************************************************************************
   * @attention
   *
-  * <h2><center>&copy; COPYRIGHT(c) 2015 STMicroelectronics</center></h2>
+  * <h2><center>&copy; COPYRIGHT(c) 2016 STMicroelectronics</center></h2>
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -108,7 +106,7 @@
 /** @addtogroup LCD_Private
   * @{
   */
-#define LCD_TIMEOUT_VALUE             1000
+#define LCD_TIMEOUT_VALUE             1000U
 /**
   * @}
   */
@@ -186,8 +184,8 @@ HAL_StatusTypeDef HAL_LCD_DeInit(LCD_HandleTypeDef *hlcd)
   */
 HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
 {
-  uint32_t tickstart = 0x00;
-  uint8_t counter = 0;
+  uint32_t tickstart = 0x00U;
+  uint8_t counter = 0U;
     
   /* Check the LCD handle allocation */
   if(hlcd == NULL)
@@ -228,7 +226,7 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
      in the LCD_SR register */
   for(counter = LCD_RAM_REGISTER0; counter <= LCD_RAM_REGISTER15; counter++)
   {
-    hlcd->Instance->RAM[counter] = 0;
+    hlcd->Instance->RAM[counter] = 0U;
   }
   /* Enable the display request */
   SET_BIT(hlcd->Instance->SR, LCD_SR_UDR);
@@ -306,6 +304,9 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
   */
  __weak void HAL_LCD_MspDeInit(LCD_HandleTypeDef *hlcd)
 {
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hlcd);
+
   /* NOTE: This function Should not be modified, when the callback is needed,
            the HAL_LCD_MspDeInit could be implemented in the user file
    */ 
@@ -318,6 +319,9 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
   */
  __weak void HAL_LCD_MspInit(LCD_HandleTypeDef *hlcd)
 {
+  /* Prevent unused argument(s) compilation warning */
+  UNUSED(hlcd);
+
   /* NOTE: This function Should not be modified, when the callback is needed,
            the HAL_LCD_MspInit could be implemented in the user file
    */ 
@@ -388,7 +392,7 @@ HAL_StatusTypeDef HAL_LCD_Init(LCD_HandleTypeDef *hlcd)
   */
 HAL_StatusTypeDef HAL_LCD_Write(LCD_HandleTypeDef *hlcd, uint32_t RAMRegisterIndex, uint32_t RAMRegisterMask, uint32_t Data)
 {
-  uint32_t tickstart = 0x00; 
+  uint32_t tickstart = 0x00U; 
   
   if((hlcd->State == HAL_LCD_STATE_READY) || (hlcd->State == HAL_LCD_STATE_BUSY))
   {
@@ -434,8 +438,8 @@ HAL_StatusTypeDef HAL_LCD_Write(LCD_HandleTypeDef *hlcd, uint32_t RAMRegisterInd
   */
 HAL_StatusTypeDef HAL_LCD_Clear(LCD_HandleTypeDef *hlcd)
 {
-  uint32_t tickstart = 0x00; 
-  uint32_t counter = 0;
+  uint32_t tickstart = 0x00U; 
+  uint32_t counter = 0U;
 
   if((hlcd->State == HAL_LCD_STATE_READY) || (hlcd->State == HAL_LCD_STATE_BUSY))
   {
@@ -463,7 +467,7 @@ HAL_StatusTypeDef HAL_LCD_Clear(LCD_HandleTypeDef *hlcd)
     /* Clear the LCD_RAM registers */
     for(counter = LCD_RAM_REGISTER0; counter <= LCD_RAM_REGISTER15; counter++)
     {
-      hlcd->Instance->RAM[counter] = 0;
+      hlcd->Instance->RAM[counter] = 0U;
     }
     
     /* Update the LCD display */
@@ -493,7 +497,7 @@ HAL_StatusTypeDef HAL_LCD_Clear(LCD_HandleTypeDef *hlcd)
   */
 HAL_StatusTypeDef HAL_LCD_UpdateDisplayRequest(LCD_HandleTypeDef *hlcd)
 {
-  uint32_t tickstart = 0x00;
+  uint32_t tickstart = 0x00U;
   
   /* Clear the Update Display Done flag before starting the update display request */
   __HAL_LCD_CLEAR_FLAG(hlcd, LCD_FLAG_UDD);
@@ -585,7 +589,7 @@ uint32_t HAL_LCD_GetError(LCD_HandleTypeDef *hlcd)
   */
 HAL_StatusTypeDef LCD_WaitForSynchro(LCD_HandleTypeDef *hlcd)
 {
-  uint32_t tickstart = 0x00; 
+  uint32_t tickstart = 0x00U; 
   
   /* Get timeout */
   tickstart = HAL_GetTick();

@@ -2,8 +2,6 @@
   ******************************************************************************
   * @file      startup_stm32l081xx.s
   * @author    MCD Application Team
-  * @version   $VERSION$
-  * @date      $DATE$
   * @brief     STM32L081xx Devices vector table for Atollic TrueSTUDIO toolchain.
   *            This module performs:
   *                - Set the initial SP
@@ -148,7 +146,7 @@ g_pfnVectors:
   .word  0
   .word  0
   .word  SVC_Handler
-  .word  DebugMon_Handler
+  .word  0
   .word  0
   .word  PendSV_Handler
   .word  SysTick_Handler
@@ -201,9 +199,6 @@ g_pfnVectors:
 
    .weak      SVC_Handler
    .thumb_set SVC_Handler,Default_Handler
-
-   .weak      DebugMon_Handler
-   .thumb_set DebugMon_Handler,Default_Handler
 
    .weak      PendSV_Handler
    .thumb_set PendSV_Handler,Default_Handler
@@ -259,8 +254,8 @@ g_pfnVectors:
    .weak      TIM3_IRQHandler
    .thumb_set TIM3_IRQHandler,Default_Handler
 
-   .weak      TIM6_DAC_IRQHandler
-   .thumb_set TIM6_DAC_IRQHandler,Default_Handler
+   .weak      TIM6_IRQHandler
+   .thumb_set TIM6_IRQHandler,Default_Handler
 
    .weak      TIM7_IRQHandler
    .thumb_set TIM7_IRQHandler,Default_Handler

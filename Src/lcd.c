@@ -4,8 +4,13 @@
   * Description        : This file provides code for the configuration
   *                      of the LCD instances.
   ******************************************************************************
+  ** This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2017 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -60,21 +65,24 @@ void MX_LCD_Init(void)
   hlcd.Init.BlinkMode = LCD_BLINKMODE_OFF;
   hlcd.Init.BlinkFrequency = LCD_BLINKFREQUENCY_DIV8;
   hlcd.Init.MuxSegment = LCD_MUXSEGMENT_DISABLE;
-  HAL_LCD_Init(&hlcd);
+  if (HAL_LCD_Init(&hlcd) != HAL_OK)
+  {
+    _Error_Handler(__FILE__, __LINE__);
+  }
 
 }
 
-void HAL_LCD_MspInit(LCD_HandleTypeDef* hlcd)
+void HAL_LCD_MspInit(LCD_HandleTypeDef* lcdHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct;
-  if(hlcd->Instance==LCD)
+  if(lcdHandle->Instance==LCD)
   {
   /* USER CODE BEGIN LCD_MspInit 0 */
 
   /* USER CODE END LCD_MspInit 0 */
-    /* Peripheral clock enable */
-    __LCD_CLK_ENABLE();
+    /* LCD clock enable */
+    __HAL_RCC_LCD_CLK_ENABLE();
   
     /**LCD GPIO Configuration    
     PA2     ------> LCD_SEG1
@@ -98,7 +106,7 @@ void HAL_LCD_MspInit(LCD_HandleTypeDef* hlcd)
                           |GPIO_PIN_8;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF1_LCD;
     HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -107,11 +115,11 @@ void HAL_LCD_MspInit(LCD_HandleTypeDef* hlcd)
                           |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
-    GPIO_InitStruct.Speed = GPIO_SPEED_LOW;
+    GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
     GPIO_InitStruct.Alternate = GPIO_AF1_LCD;
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-    /* Peripheral interrupt init*/
+    /* LCD interrupt Init */
     HAL_NVIC_SetPriority(LCD_IRQn, 3, 0);
     HAL_NVIC_EnableIRQ(LCD_IRQn);
   /* USER CODE BEGIN LCD_MspInit 1 */
@@ -120,16 +128,16 @@ void HAL_LCD_MspInit(LCD_HandleTypeDef* hlcd)
   }
 }
 
-void HAL_LCD_MspDeInit(LCD_HandleTypeDef* hlcd)
+void HAL_LCD_MspDeInit(LCD_HandleTypeDef* lcdHandle)
 {
 
-  if(hlcd->Instance==LCD)
+  if(lcdHandle->Instance==LCD)
   {
   /* USER CODE BEGIN LCD_MspDeInit 0 */
 
   /* USER CODE END LCD_MspDeInit 0 */
     /* Peripheral clock disable */
-    __LCD_CLK_DISABLE();
+    __HAL_RCC_LCD_CLK_DISABLE();
   
     /**LCD GPIO Configuration    
     PA2     ------> LCD_SEG1
@@ -156,13 +164,12 @@ void HAL_LCD_MspDeInit(LCD_HandleTypeDef* hlcd)
                           |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15 
                           |GPIO_PIN_3|GPIO_PIN_4|GPIO_PIN_5);
 
-    /* Peripheral interrupt Deinit*/
+    /* LCD interrupt Deinit */
     HAL_NVIC_DisableIRQ(LCD_IRQn);
-
-  }
   /* USER CODE BEGIN LCD_MspDeInit 1 */
 
   /* USER CODE END LCD_MspDeInit 1 */
+  }
 } 
 
 /* USER CODE BEGIN 1 */

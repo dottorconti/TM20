@@ -19,37 +19,25 @@ extern UART_HandleTypeDef huart1;
 extern RTC_HandleTypeDef hrtc;
 extern LCD_HandleTypeDef hlcd;
 
-uint16_t vRef;
-
-uint16_t voltage, battery, VrefLCD;
 void Stop_Mode(void)
 {
-//	ADC_Disable(&hadc);
 //	__HAL_UART_CLEAR_IT(&huart1, UART_CLEAR_WUF);
 //	__HAL_UART_ENABLE_IT(&huart1, UART_IT_WUF);
 	__HAL_ADC_DISABLE(&hadc);
-//	__ADC1_CLK_DISABLE();
-	GPIO_User_Init();
+
+//	HAL_PWREx_EnableUltraLowPower();
 	HAL_SuspendTick();
+	GPIO_LowPower_Init();
+	__HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
 	__HAL_RTC_WAKEUPTIMER_CLEAR_FLAG(&hrtc, RTC_FLAG_WUTF);
   __HAL_RTC_EXTI_CLEAR_FLAG(RTC_EXTI_LINE_WAKEUPTIMER_EVENT);
 	HAL_PWR_EnterSTOPMode(PWR_LOWPOWERREGULATOR_ON, PWR_STOPENTRY_WFI);
-	HAL_ResumeTick();
+//	HAL_PWREx_DisableUltraLowPower();
 	SystemClock_User_Config();
-	MX_GPIO_Init();
-//	__ADC1_CLK_ENABLE();
+	HAL_ResumeTick();
+	GPIO_LowPower_DeInit();
+
 	__HAL_ADC_ENABLE(&hadc);
-}
-
-uint16_t ReadVoltage(uint16_t Vbatt)
-{
-	return (uint16_t)(((float)(Vbatt * vRef)/4096)/**2*/);
-}
-
-uint16_t ReadVref(uint16_t Vreference)
-{
-	vRefInt_cal = *((uint16_t*)0x1FF80078);
-	return (uint16_t)(float)(((3.F*vRefInt_cal)/(Vreference))*1000);
 }
 
 void LowBattery(void)
@@ -88,7 +76,12 @@ void SystemClock_User_Config(void)
   PeriphClkInit.RTCClockSelection = RCC_RTCCLKSOURCE_LSI;
   HAL_RCCEx_PeriphCLKConfig(&PeriphClkInit);
 
-  __SYSCFG_CLK_ENABLE();
+  HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+
+  HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+
+  /* SysTick_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
 
 }
 /**

@@ -20,15 +20,18 @@
 
 /* Time in seconds */	 
 #define DEBUG_TIME								5	 
-#define STOP_TIME									60	 
+#define STOP_TIME									30	 
 #define LOW_BATTERY_STOP_TIME 		150
 #define LOW_BATTERY 							600
 
-void GPIO_User_Init(void);
+void GPIO_LowPower_Init(void);
+void GPIO_LowPower_DeInit(void);
 void SystemClock_User_Config(void);
 void Stop_Mode(void);	 
 void LowBattery(void);
-uint16_t ReadVoltage(uint16_t Vbatt);
+
+	 
+
 	
 #ifdef __cplusplus
 }

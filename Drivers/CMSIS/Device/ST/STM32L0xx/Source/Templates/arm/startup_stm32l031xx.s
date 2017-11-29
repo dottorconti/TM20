@@ -1,8 +1,8 @@
-;******************** (C) COPYRIGHT 2015 STMicroelectronics ********************
+;******************** (C) COPYRIGHT 2016 STMicroelectronics ********************
 ;* File Name          : startup_stm32l031xx.s
 ;* Author             : MCD Application Team
-;* Version            : $VERSION$
-;* Date               : $DATE$
+;* Version            : V1.7.1
+;* Date               : 25-November-2016
 ;* Description        : STM32l031xx Devices vector table for MDK-ARM toolchain.
 ;*                      This module performs:
 ;*                      - Set the initial SP
@@ -12,7 +12,6 @@
 ;*                        calls main()).
 ;*                      After Reset the Cortex-M0+ processor is in Thread mode,
 ;*                      priority is Privileged, and the Stack is set to Main.
-;* <<< Use Configuration Wizard in Context Menu >>>   
 ;*******************************************************************************
 ;* 
 ;* Redistribution and use in source and binary forms, with or without modification,
@@ -85,7 +84,7 @@ __Vectors       DCD     __initial_sp              ; Top of Stack
                 DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
                 DCD     SVC_Handler               ; SVCall Handler
-                DCD     DebugMon_Handler          ; Debug Monitor Handler
+                DCD     0                         ; Reserved
                 DCD     0                         ; Reserved
                 DCD     PendSV_Handler            ; PendSV Handler
                 DCD     SysTick_Handler           ; SysTick Handler
@@ -154,11 +153,6 @@ HardFault_Handler\
                 ENDP
 SVC_Handler     PROC
                 EXPORT  SVC_Handler                    [WEAK]
-                B       .
-                ENDP
-DebugMon_Handler\
-                PROC
-                EXPORT  DebugMon_Handler               [WEAK]
                 B       .
                 ENDP
 PendSV_Handler  PROC

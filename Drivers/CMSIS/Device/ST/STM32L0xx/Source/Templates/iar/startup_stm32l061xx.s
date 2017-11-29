@@ -1,8 +1,8 @@
-;/******************** (C) COPYRIGHT 2015 STMicroelectronics ********************
+;/******************** (C) COPYRIGHT 2016 STMicroelectronics ********************
 ;* File Name          : startup_stm32l061xx.s
 ;* Author             : MCD Application Team
-;* Version            : $VERSION$
-;* Date               : $DATE$
+;* Version            : V1.7.1
+;* Date               : 25-November-2016
 ;* Description        : STM32L061xx Ultra Low Power Devices vector 
 ;*                      This module performs:
 ;*                      - Set the initial SP
@@ -82,7 +82,7 @@ __vector_table
         DCD     0                         ; Reserved
         DCD     0                         ; Reserved
         DCD     SVC_Handler               ; SVCall Handler
-        DCD     DebugMon_Handler          ; Debug Monitor Handler
+        DCD     0                         ; Reserved
         DCD     0                         ; Reserved
         DCD     PendSV_Handler            ; PendSV Handler
         DCD     SysTick_Handler           ; SysTick Handler
@@ -152,15 +152,9 @@ SVC_Handler
         B SVC_Handler
         
         
-        PUBWEAK DebugMon_Handler
-        SECTION .text:CODE:NOROOT:REORDER(1)
-DebugMon_Handler
-        B DebugMon_Handler
-        
-        
         PUBWEAK PendSV_Handler
         SECTION .text:CODE:NOROOT:REORDER(1)
-PendSV_Handler
+PendSV_Handler  
         B PendSV_Handler
         
         

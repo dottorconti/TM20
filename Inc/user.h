@@ -19,7 +19,7 @@
 //#define ADC_EN
 //#define DEBUG	
 
-void Error_Handler(void);
+//void Error_Handler(void);
 void InitVariable(void);
 
 

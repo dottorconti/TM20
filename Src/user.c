@@ -51,10 +51,10 @@ void InitVariable(void)
 	conversion = BUSY;
 }
 
-void Error_Handler(void)
-{
-	HAL_NVIC_SystemReset();
-}
+//void Error_Handler(void)
+//{
+//	HAL_NVIC_SystemReset();
+//}
 
 
 

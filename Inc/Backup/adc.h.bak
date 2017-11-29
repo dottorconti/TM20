@@ -4,8 +4,13 @@
   * Description        : This file provides code for the configuration
   *                      of the ADC instances.
   ******************************************************************************
+  ** This notice applies to any and all portions of this file
+  * that are not between comment pairs USER CODE BEGIN and
+  * USER CODE END. Other portions of this file, whether 
+  * inserted by the user or by software development tools
+  * are owned by their respective copyright owners.
   *
-  * COPYRIGHT(c) 2015 STMicroelectronics
+  * COPYRIGHT(c) 2017 STMicroelectronics
   *
   * Redistribution and use in source and binary forms, with or without modification,
   * are permitted provided that the following conditions are met:
@@ -40,6 +45,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
+#include "main.h"
 
 /* USER CODE BEGIN Includes */
 
@@ -50,6 +56,8 @@ extern ADC_HandleTypeDef hadc;
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
+
+extern void _Error_Handler(char *, int);
 
 void MX_ADC_Init(void);
 

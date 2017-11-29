@@ -2,7 +2,8 @@
 .\out\lcd.o: ../Inc/lcd.h
 .\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\lcd.o: ../Inc/stm32l0xx_hal_conf.h
-.\out\lcd.o: ../Inc/mxconstants.h
+.\out\lcd.o: ../Inc/main.h
+.\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc.h
 .\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_def.h
 .\out\lcd.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/stm32l0xx.h
@@ -10,9 +11,9 @@
 .\out\lcd.o: ../Drivers/CMSIS/Include/core_cm0plus.h
 .\out\lcd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
 .\out\lcd.o: ../Drivers/CMSIS/Include/core_cmInstr.h
+.\out\lcd.o: ../Drivers/CMSIS/Include/cmsis_armcc.h
 .\out\lcd.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 .\out\lcd.o: ../Drivers/CMSIS/Device/ST/STM32L0xx/Include/system_stm32l0xx.h
-.\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal.h
 .\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/Legacy/stm32_hal_legacy.h
 .\out\lcd.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdio.h
 .\out\lcd.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rcc_ex.h

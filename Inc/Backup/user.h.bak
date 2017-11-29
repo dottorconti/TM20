@@ -15,60 +15,13 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "stm32l0xx_hal.h"
-	 
 
-#define ADC_BUFF_SIZE 9
-//define DEBUG	
-//define COUNTER	
+//#define ADC_EN
+//#define DEBUG	
 
-#define CH_BATT 0	 
-#define CH_NTC2 1
-#define CH_VREF 2	
-	 
-#define CH_NUM	3	 
-	 
-void lcd_print(int16_t temperature);	
-void Error_Handler(void);
-void Timeout_ISR(void);
+//void Error_Handler(void);
 void InitVariable(void);
-uint16_t ReadVref(uint16_t Vreference);
-unsigned int IntToBCD(unsigned int inValue);
-	
-extern __IO uint16_t ADC_BUFF[];	
 
-extern	uint8_t timeout1msISR;	
-extern	uint8_t timeout1ms;	
-extern	uint8_t timeout1sISR;
-extern	uint8_t timeout1s;
-extern 	uint8_t	startTimeoutConter; 
-extern	float TemperatureValue;
-extern 	int16_t i16Celsius;
-extern	uint16_t VoltageValue;
-extern 	uint16_t vRef;
-extern 	uint16_t temp1;
-extern  uint16_t temp2;
-extern 	uint16_t temp3;
-extern  uint16_t temp4;
-extern 	uint16_t test;
-extern uint16_t value;
-extern uint16_t vRefInt_cal;
-extern uint16_t 		NTC2;
-extern uint16_t vRef;
-extern uint16_t battery;
-
-extern uint16_t u16Battery;
-extern uint16_t u16Ntc2;
-extern uint16_t u16Vref;
-
-typedef enum enum_conversion_status
-{
-	BUSY		= 0x00,
-	READY 	= 0x01,
-	WAIT		= 0x02,
-	ERR			= 0x05
-}conversion_enum;
-
-extern conversion_enum conversion;
 
 #ifdef __cplusplus
 }
