@@ -33,12 +33,9 @@
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc.h
 .\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc_ex.h
-.\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
-.\out\main.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 .\out\main.o: ../Inc/adc.h
 .\out\main.o: ../Inc/lcd.h
 .\out\main.o: ../Inc/rtc.h
-.\out\main.o: ../Inc/usart.h
 .\out\main.o: ../Inc/gpio.h
 .\out\main.o: ../Inc/user.h
 .\out\main.o: ../Inc/LcdManagement.h

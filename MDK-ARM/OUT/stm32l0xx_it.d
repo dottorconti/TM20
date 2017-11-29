@@ -32,8 +32,6 @@
 .\out\stm32l0xx_it.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 .\out\stm32l0xx_it.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc.h
 .\out\stm32l0xx_it.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc_ex.h
-.\out\stm32l0xx_it.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
-.\out\stm32l0xx_it.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 .\out\stm32l0xx_it.o: ../Inc/stm32l0xx_it.h
 .\out\stm32l0xx_it.o: ../Inc/user.h
 .\out\stm32l0xx_it.o: ../Inc/LowPowerManagement.h

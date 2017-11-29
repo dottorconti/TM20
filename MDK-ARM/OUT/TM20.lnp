@@ -2,7 +2,6 @@
 ".\out\lcd.o"
 ".\out\stm32l0xx_hal_msp.o"
 ".\out\main.o"
-".\out\usart.o"
 ".\out\adc.o"
 ".\out\rtc.o"
 ".\out\gpio.o"

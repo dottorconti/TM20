@@ -33,7 +33,5 @@
 .\out\sensortemperature.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_pwr_ex.h
 .\out\sensortemperature.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc.h
 .\out\sensortemperature.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_rtc_ex.h
-.\out\sensortemperature.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart.h
-.\out\sensortemperature.o: ../Drivers/STM32L0xx_HAL_Driver/Inc/stm32l0xx_hal_uart_ex.h
 .\out\sensortemperature.o: ../Inc/SensorTemperature.h
 .\out\sensortemperature.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h

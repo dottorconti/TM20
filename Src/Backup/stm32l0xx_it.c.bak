@@ -55,7 +55,6 @@ extern GPIO_InitTypeDef GPIO_InitStruct;
 extern ADC_HandleTypeDef hadc;
 extern LCD_HandleTypeDef hlcd;
 extern RTC_HandleTypeDef hrtc;
-extern UART_HandleTypeDef huart1;
 
 /******************************************************************************/
 /*            Cortex-M0+ Processor Interruption and Exception Handlers         */ 
@@ -157,20 +156,6 @@ void ADC1_COMP_IRQHandler(void)
 	
 		
   /* USER CODE END ADC1_COMP_IRQn 1 */
-}
-
-/**
-* @brief This function handles USART1 global interrupt / USART1 wake-up interrupt through EXTI line 25.
-*/
-void USART1_IRQHandler(void)
-{
-  /* USER CODE BEGIN USART1_IRQn 0 */
-
-  /* USER CODE END USART1_IRQn 0 */
-  HAL_UART_IRQHandler(&huart1);
-  /* USER CODE BEGIN USART1_IRQn 1 */
-
-  /* USER CODE END USART1_IRQn 1 */
 }
 
 /**
